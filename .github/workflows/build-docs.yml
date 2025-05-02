@@ -100,7 +100,7 @@ jobs:
             python /docbuild/fix_diff.py /git/staging/rawdiff.md /git/staging/diff.md /lastrelease /git
             python /docbuild/make-pdf.py /git/staging/diff.md /git/artefact/Differences.pdf
             cp -rf /git/staging/main.md /git/artefact/main.md
-            pandoc --template=/git/templates/github-pages.html --toc -o /git/gh-pages/index.html /git/staging/main.md
+            pandoc --from=markdown+escaped_line_breaks+hard_line_breaks --filter=pandoc-xnos --template=/git/templates/github-pages.html --toc -o /git/gh-pages/index.html /git/staging/main.md
             cp /git/templates/styles.css /git/gh-pages/styles.css
             cp /git/figures/logo/favicon.ico /git/gh-pages/favicon.ico
       # /docbuild/default-build.sh /git/markdown/main.md /git/schema/inframodel-raw.xsd inframodel.xsd ${{steps.last_release.outputs.html_url}} ${{steps.last_release.outputs.download_url}}
